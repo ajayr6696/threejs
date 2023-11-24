@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Ajay</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>ThreeJS Ajay</h1>
+            </div>
+            <div class="sidebar-menu">
+                <h2>Label</h2>
+                <!-- Included menu options here -->
+                <button id="circle-tool" class="draggable">Circle</button>
+                <button id="rectangle-tool" class="draggable">Rectangle</button>
+                <button id="ellipse-tool" class="draggable">Ellipse</button>
+                <button id="text-tool" class="draggable">Text</button>
+            </div>
+        </div>
+            <!-- Display the canvas or image here -->
+            <div id="canvas-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- svg will be added here -->
+            </div>
+    </div>
+    <script src="dist/bundle.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@<version>/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@<version>/examples/jsm/"
+            }
+        }
+    </script>
+</body>
+</html>
