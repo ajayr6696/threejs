@@ -98,7 +98,7 @@ function loadSVGTexture(svgPath) {
         
         group.scale.set(0.2, -0.2, 0.2); // Adjust scale as needed
         scene.add(group);
-        group.position.set(40, 30, 1);
+        group.position.set(-30, 30, 1);
         SVGObject = group;
     });
 }
