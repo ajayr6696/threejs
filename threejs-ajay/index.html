@@ -4,9 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Three.js Ajay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
+    <div id="popup-form" class="popup-form">
+        <h2>Label Config</h2>
+        <div>
+            <div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark disabled" aria-current="page" href="#" id="action-option">Action</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" aria-current="page" href="#" id="content-option">Content</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark selected" aria-current="page" href="#" id="view-option">View</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark disabled" aria-current="page" href="#" id="animation-option">Animation</a>
+                    </li>
+                </ul>
+            </div>
+    
+            <!-- Options for 'View' -->
+            <div>
+                <ul class="nav" id="view-options">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" aria-current="page" href="#" id="text-option">Text</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" aria-current="page" href="#" id="shape-option">Shape</a>
+                    </li>
+                </ul>
+                <!-- Options for 'Content' -->
+                <ul class="nav" id="content-options">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" aria-current="page" href="#" id="static-option">Static</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark disabled" aria-current="page" href="#" id="dynamic-option">Dynamic</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div id="text-options">
+                    <!-- Options for 'Text' -->
+                    <div class="d-flex">
+                        <div class="form-group bg-light border-bottom border-dark col-md-5 p-2 m-4">
+                            <label class="input-label" for="text-fill-range">Fill:</label>
+                            <input class="form-control-range" type="range" id="text-fill-range" min="0" max="1">
+                        </div>
+                        <div class="form-check form-switch  col-md-5 p-2 m-4">
+                            <input type="checkbox" class="form-check-input" id="text-transparent-toggle" checked>
+                            <label class="form-check-label" for="text-transparent-toggle">Transparent</label>
+                        </div>
+                    </div>
+                    <div class="form-group bg-light border-bottom border-dark col-md-5 p-2 m-4">
+                        <label class="input-label" for="text-font-size-input">Font Size:</label>
+                        <input class="form-control" type="number" id="text-font-size-input" min="1">
+                    </div>
+                </div>
+                
+                <div id="shape-options">
+                    <!-- Options for 'Shape' -->
+                    <div class="d-flex">
+                        <div class="form-group bg-light border-bottom border-dark col-md-5 p-2 m-4">
+                            <label class="input-label" for="shape-fill-range">Fill:</label>
+                            <input class="form-control-range" type="range" id="shape-fill-range" min="0" max="1">
+                        </div>
+                        <div class="form-check form-switch col-md-5 p-2 m-4">
+                            <input type="checkbox" class="form-check-input" id="shape-transparent-toggle" checked>
+                            <label class="form-check-label" for="shape-transparent-toggle">Transparent</label>
+                        </div>
+                    </div>
+                    <div class="form-group bg-light border-bottom border-dark col-md-5 p-2 m-4">
+                        <label class="input-label" for="shape-height-input">Height:</label>
+                        <input class="form-control" type="number" id="shape-height-input" min="1">
+                    </div>
+                
+                    <div class="form-group bg-light border-bottom border-dark col-md-5 p-2 m-4">
+                        <label class="input-label" for="shape-width-input">Width:</label>
+                        <input class="form-control" type="number" id="shape-width-input" min="1">
+                    </div>
+                </div>            
+                <div id="static-dynamic-options">
+                    <!-- Options for 'Static' -->
+                    <div class="form-group bg-light border-bottom border-dark col-md-5 p-2 m-4">
+                        <label class="input-label" for="shape-width-input">Label:</label>
+                        <input class="form-control disabled" type="text" id="static-content-input" readonly>
+                    </div>
+                </div>
+            </div>
+    
+            <button class="save-button" id="save-button">Save</button>
+        </div>
+    </div>
+    
+    
+    
     <div class="page-container">
         <div class="sidebar">
             <div class="sidebar-header">
@@ -14,19 +111,21 @@
             </div>
             <div class="sidebar-menu">
                 <h2>Label</h2>
-                <!-- Included menu options here -->
-                <button id="circle-tool" class="draggable">Circle</button>
-                <button id="rectangle-tool" class="draggable">Rectangle</button>
-                <button id="ellipse-tool" class="draggable">Ellipse</button>
-                <button id="text-tool" class="draggable">Text</button>
+                <button id="circle" class="btn btn-light draggable">Circle</button>
+                <button id="rectangle" class="btn btn-light draggable">Rectangle</button>
+                <button id="ellipse" class="btn btn-light draggable">Ellipse</button>
+                <button id="text" class="btn btn-light draggable">Text</button>
             </div>
         </div>
-            <!-- Display the canvas or image here -->
-            <div id="canvas-container" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <!-- svg will be added here -->
-            </div>
+        <!-- Display the canvas or image -->
+        <div id="canvas-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <!-- svg will be added here -->
+        </div>
     </div>
     <script src="dist/bundle.js"></script>
+     <!-- Bootstrap CSS added for styling -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script type="importmap">
         {
             "imports": {
