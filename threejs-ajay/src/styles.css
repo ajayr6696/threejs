@@ -75,3 +75,65 @@ body{
     overflow: hidden;
 }
 
+/* Styles for the pop-up form */
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 700px; 
+    width: 700px;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+
+  .popup-form h2 {
+    margin-bottom: 20px;
+  }
+
+  .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6f42c1;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .save-button:hover {
+    background-color: #45a049;
+  }
+
+.nav-link {
+    cursor: pointer;
+}
+
+.nav-link.selected {
+    color: #6f42c1 !important;
+    border-bottom: 2px solid #6f42c1 !important;
+}
+
+.nav-link:hover {
+    color: #6f42c1 !important;
+}
+
+.hide {
+    display: none !important; /* To hide elements */
+}
+
+.selected {
+    color: #6f42c1 !important; /* Change text color for selected option */
+    border-bottom: 2px solid #6f42c1 !important; /* Change bottom border color for selected option */
+    cursor: pointer; /* Change cursor on hover for better UX */
+}
+
+.disabled {
+    color: gray !important;
+}
