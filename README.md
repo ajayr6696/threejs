@@ -1,5 +1,5 @@
 # threejs
-Three JS Project - i4Twins
+Three JS Project
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
